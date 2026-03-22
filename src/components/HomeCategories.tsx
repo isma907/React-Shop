@@ -9,7 +9,7 @@ export default function HomeCategories() {
   return (
     <>
       <h2 className="text-2xl font-semibold">Categories</h2>
-      <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+      <div className="mt-6 grid grid-cols-3 gap-x-6 gap-y-10 sm:grid-cols-5 lg:grid-cols-4 xl:gap-x-8">
         {categoriesQuery.data?.map((category) => (
           <div key={category.id} className="group relative">
             <img
@@ -26,7 +26,9 @@ export default function HomeCategories() {
               {category.name}
               {/* </Link> */}
             </h3>
-            <p className="text-base font-semibold text-gray-900">{category.slug}</p>
+            <p className="text-base font-semibold text-gray-900 hidden lg:block">
+              {category.slug}
+            </p>
           </div>
         ))}
       </div>
