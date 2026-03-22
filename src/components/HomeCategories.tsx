@@ -9,13 +9,13 @@ export default function HomeCategories() {
   return (
     <>
       <h2 className="text-2xl font-semibold">Categories</h2>
-      <div className="mt-6 grid grid-cols-3 gap-x-6 gap-y-10 sm:grid-cols-5 lg:grid-cols-4 xl:gap-x-8">
+      <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-5 lg:grid-cols-6 xl:gap-x-8">
         {categoriesQuery.data?.map((category) => (
           <div key={category.id} className="group relative">
             <img
               alt={category.name}
               src={category.image}
-              className="w-full rounded-lg bg-white object-cover group-hover:opacity-75 max-sm:h-80 sm:aspect-2/1 lg:aspect-square"
+              className="w-full rounded-lg bg-white object-cover group-hover:opacity-75   lg:aspect-square"
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).src = placeholder;
               }}
