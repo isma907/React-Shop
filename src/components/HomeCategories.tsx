@@ -26,9 +26,7 @@ export default function HomeCategories() {
               {category.name}
               {/* </Link> */}
             </h3>
-            <p className="text-base font-semibold text-gray-900 hidden lg:block">
-              {category.slug}
-            </p>
+            <p className="text-base font-semibold text-gray-900 hidden lg:block">{category.slug}</p>
           </div>
         ))}
       </div>
