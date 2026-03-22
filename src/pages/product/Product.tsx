@@ -8,8 +8,6 @@ const Product = () => {
     const productId = id ? Number(id) : undefined
     const { data: product, isFetching, isError } = useProducts(productId).productQuery
 
-
-
     if (isFetching) {
         return <div>Loading product...</div>
     }
