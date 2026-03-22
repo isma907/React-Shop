@@ -9,7 +9,7 @@ const RelatedProducts = ({ productId }: { productId: number }) => {
 
       {isFetching && <div>Loading...</div>}
 
-      <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-5">
+      <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
         {relatedProducts?.map((product: any) => (
           <ProductCard key={product.id} product={product} />
         ))}
