@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .card {
+        @apply flex flex-col items-center p-4 shadow-lg rounded-xl bg-gray-100
+    }
+}
