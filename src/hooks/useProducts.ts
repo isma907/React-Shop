@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { getProduct, getProducts } from "../services/products.service"
+import { getProduct, getProducts, getRelatedProducts } from "../services/products.service"
 
 export const useProducts = (id?: number) => {
     const productsQuery = useQuery({
@@ -15,5 +15,12 @@ export const useProducts = (id?: number) => {
         staleTime: Infinity,
     })
 
-    return { productsQuery, productQuery }
+
+    const relatedProductsQuery = useQuery({
+        queryKey: ["product related", id],
+        queryFn: () => getRelatedProducts(id! as number),
+        enabled: !!id,
+        staleTime: Infinity,
+    })
+    return { productsQuery, productQuery, relatedProductsQuery }
 }

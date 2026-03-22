@@ -6,7 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools/production'
 
 import MainLayout from './layouts/MainLayout'
 import Home from './pages/Home'
-import Product from './pages/Product'
+import Product from './pages/product/Product'
 import Cart from './pages/Cart'
 import './index.css'
 

@@ -14,9 +14,9 @@ export default function Home() {
                 {productsQuery.data.map((el: any) => {
                     return (
                         <div key={el.id}>
-                            <img src={el.images[0]} alt={el.title} width={100} />
+                            <img src={el.images[0]} alt={el.title} width={200} />
                             {el.title}
-                            <Link to={"/product/" + el.id}>Ver</Link>
+                            <Link to={`/product/${el.id}`}>Ver</Link>
                         </div>
                     )
                 })}

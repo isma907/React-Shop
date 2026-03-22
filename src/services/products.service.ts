@@ -11,7 +11,7 @@ export function getProduct(id: number) {
 }
 
 export function getRelatedProducts(id: number) {
-    return fetch(`https://fakestoreapi.com/products/${id}/related`)
+    return fetch(`https://api.escuelajs.co/api/v1/products/${id}/related`)
         .then(res => res.json())
         .catch(err => console.log(err))
 }
