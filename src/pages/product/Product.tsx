@@ -5,11 +5,16 @@ import RelatedProducts from "./RelatedProducts"
 const Product = () => {
     const { id } = useParams()
 
+    const placeholder = "https://placehold.co/1000x1000?text=Product&bg=E5E7EB&fg=6B7280";
     const productId = id ? Number(id) : undefined
     const { data: product, isFetching, isError } = useProducts(productId).productQuery
 
     if (isFetching) {
-        return <div>Loading product...</div>
+        return (
+            <div className="fixed inset-0 flex items-center justify-center bg-white/50 z-50">
+                <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+            </div>
+        )
     }
 
     if (isError) {
@@ -50,24 +55,38 @@ const Product = () => {
                     </ol>
                 </nav>
 
+                {isFetching && <div>Loading product...</div>}
+
                 {/* Image gallery */}
                 <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-8">
                     <img
-                        src={product.images[0]}
+                        src={product.images[0] ?? placeholder}
                         className="row-span-2 aspect-3/4 size-full rounded-lg object-cover max-lg:hidden"
+                        onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).src = placeholder;
+                        }}
                     />
                     <img
-                        src={product.images[1]}
+                        src={product.images[1] ?? placeholder}
                         className="col-start-2 aspect-3/2 size-full rounded-lg object-cover max-lg:hidden"
+                        onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).src = placeholder;
+                        }}
                     />
                     <img
-                        src={product.images[2]}
-                        className="col-start-2 row-start-2 aspect-3/2 size-full rounded-lg object-cover max-lg:hidden"
+                        src={product.images[2] ?? placeholder}
+                        className="col-start-2 row-start-2 aspect-3/2 size-full rounded-lg object-cover"
+                        onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).src = placeholder;
+                        }}
                     />
-                    <img
-                        src={product.images[3]}
+                    {/* <img
+                        src={product.images[3] ?? placeholder}
                         className="row-span-2 aspect-4/5 size-full object-cover sm:rounded-lg lg:aspect-3/4"
-                    />
+                        onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).src = placeholder;
+                        }}
+                    /> */}
                 </div>
 
                 {/* Product info */}
@@ -101,10 +120,10 @@ const Product = () => {
 
 
                         <div className="mt-10">
-                            <h2 className="text-sm font-medium text-gray-900">Details</h2>
+                            <h2 className="text-sm font-medium text-gray-900">Category</h2>
 
                             <div className="mt-4 space-y-6">
-                                <p className="text-sm text-gray-600">{product.details}</p>
+                                <p className="text-sm text-gray-600">{product.category.name}</p>
                             </div>
                         </div>
                     </div>
