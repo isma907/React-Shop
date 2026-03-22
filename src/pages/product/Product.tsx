@@ -129,10 +129,11 @@ const Product = () => {
                     </div>
                 </div>
 
-                <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl">
-                    <RelatedProducts productId={productId!} />
+                <div className="w-full bg-gray-100 py-6">
+                    <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl">
+                        <RelatedProducts productId={productId!} />
+                    </div>
                 </div>
-
             </div>
 
         </>

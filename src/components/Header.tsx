@@ -6,7 +6,7 @@ export default function Header() {
             <div className="mx-auto max-w-2xl p-8 px-4 lg:max-w-7xl lg:px-8 ">
                 <nav className="flex items-center justify-between gap-4">
                     <div className="text-xl font-bold cursor-pointer">
-                        <Link to="/">MiEcommerce</Link>
+                        <Link to="/">MyShop</Link>
                     </div>
                     {/* <div>
                         <input
