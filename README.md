@@ -15,6 +15,7 @@ This project has been developed using modern technologies and optimized tools fo
 - **React** (User Interface Components)
 - **TypeScript** (Robust and Type-Safe Code)
 - **Vite** (Lightning-Fast Development Environment)
+- **TanStack** (Used for robust state management, routing, and/or powerful data fetching)
 
 ## 📦 Installation & Local Usage
 
