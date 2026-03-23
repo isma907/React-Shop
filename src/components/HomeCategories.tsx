@@ -9,7 +9,7 @@ export default function HomeCategories() {
   return (
     <>
       <h2 className="text-2xl font-bold tracking-tight text-gray-900">Categories</h2>
-      <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-5 lg:grid-cols-6 xl:gap-x-8">
+      <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-5 lg:grid-cols-5 xl:gap-x-8">
         {categoriesQuery.data?.map((category) => (
           <div key={category.id} className="group relative">
             <img
