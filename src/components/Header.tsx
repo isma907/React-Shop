@@ -1,7 +1,10 @@
 import { ShoppingBagIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router';
+import { useCartStore } from '../store/cart.store';
 
 export default function Header() {
+  const { cartItems } = useCartStore();
+
   return (
     <header className="main-navbar bg-white shadow-sm sticky top-0 z-50">
       <div className="container">
@@ -24,6 +27,11 @@ export default function Header() {
             <Link to="/cart" className="flex items-center gap-2">
               <ShoppingBagIcon aria-hidden="true" className="size-6 shrink-0 " />
               Cart
+              {cartItems.length > 0 && (
+                <span className="ml-2 text-xs font-medium text-white bg-red-600 rounded-full px-2 py-1">
+                  {cartItems.length}
+                </span>
+              )}
             </Link>
           </div>
         </nav>
