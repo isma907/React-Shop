@@ -3,51 +3,88 @@ import type { CartItem } from '../interfaces/products.interface';
 import { useCartStore } from '../store/cart.store';
 
 export default function Cart() {
-  const { cartItems, removeFromCart } = useCartStore();
+  const { cartItems } = useCartStore();
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 min-h-[50vh] ">
-      <h2 className="text-2xl font-bold tracking-tight text-gray-900">My Cart</h2>
+    <div className="container">
+      <h1 className="text-4xl font-semibold text-gray-900 mb-6">Shopping cart</h1>
 
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        {cartItems.map((item) => (
-          <CartListItem product={item} />
-        ))}
+      <div className="flex h-full flex-col overflow-y-auto bg-white shadow-xl">
+        <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 ">
+          {cartItems.length === 0 && (
+            <div className="flex items-center justify-center min-h-60">
+              <p className="text-gray-500">Your cart is empty</p>
+            </div>
+          )}
 
-        <div className="flex items-center justify-between mt-8">
-          <h3 className="text-lg font-medium text-gray-900">Total</h3>
-          <p className="text-lg font-medium text-gray-900">
-            ${cartItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0)}
-          </p>
+          {cartItems.length > 0 && (
+            <>
+              <div className="mt-8">
+                <ul role="list" className="my-6 divide-y divide-gray-200">
+                  {cartItems.map((item) => (
+                    <CartListItem key={item.product.id} item={item} />
+                  ))}
+                </ul>
+              </div>
+
+              <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+                <div className="flex justify-between text-base font-medium text-gray-900">
+                  <p>Subtotal</p>
+                  <p>$262.00</p>
+                </div>
+                <p className="mt-0.5 text-sm text-gray-500">
+                  Shipping and taxes calculated at checkout.
+                </p>
+                <div className="mt-6">
+                  <a className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-indigo-700">
+                    Checkout
+                  </a>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-const CartListItem = ({ product }: { product: CartItem }) => {
+const CartListItem = ({ item }: { item: CartItem }) => {
   const { removeFromCart } = useCartStore();
 
   return (
-    <div className="flex items-center gap-4 py-3">
-      <img
-        src={product.product.images[0]}
-        alt={product.product.title}
-        className="h-24 w-24 rounded-lg object-cover"
-      />
-      <div className="flex-1">
-        <Link to={`/product/${product.product.id}`}>
-          <h3 className="text-lg font-medium text-gray-900">{product.product.title}</h3>
-        </Link>
-        <p className="text-sm text-gray-600">${product.product.price}</p>
-        <p className="text-sm text-gray-600">Quantity: {product.quantity}</p>
+    <li key={item.product.id} className="flex py-6">
+      <div className="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
+        <img
+          alt={item.product.title}
+          src={item.product.images[0]}
+          className="size-full object-cover"
+        />
       </div>
-      <button
-        onClick={() => removeFromCart(product.productId)}
-        className="text-sm text-red-600 hover:text-red-800 cursor-pointer"
-      >
-        Remove
-      </button>
-    </div>
+
+      <div className="ml-4 flex flex-1 flex-col">
+        <div>
+          <div className="flex justify-between text-base font-medium text-gray-900">
+            <h3>
+              <Link to={`/product/${item.product.id}`}>{item.product.title}</Link>
+            </h3>
+            <p className="ml-4">${item.product.price}</p>
+          </div>
+        </div>
+        <div className="flex flex-1 items-end justify-between text-sm">
+          <p className="text-gray-500">Qty {item.quantity}</p>
+
+          <div className="flex">
+            <button
+              type="button"
+              onClick={() => removeFromCart(item.product.id)}
+              className="font-medium text-indigo-600 hover:text-indigo-500 cursor-pointer"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </li>
   );
 };

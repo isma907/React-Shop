@@ -6,4 +6,8 @@
     .card {
         @apply flex flex-col items-center p-4 shadow-lg rounded-xl bg-gray-100
     }
+
+    .container {
+        @apply mx-auto max-w-2xl p-8 px-4 lg:max-w-7xl lg:px-8
+    }
 }

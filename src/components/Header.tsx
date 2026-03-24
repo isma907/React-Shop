@@ -1,9 +1,10 @@
+import { ShoppingBagIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router';
 
 export default function Header() {
   return (
-    <header className="main-navbar bg-white shadow-sm">
-      <div className="mx-auto max-w-2xl p-8 px-4 lg:max-w-7xl lg:px-8 ">
+    <header className="main-navbar bg-white shadow-sm sticky top-0 z-50">
+      <div className="container">
         <nav className="flex items-center justify-between gap-4">
           <div className="text-xl font-bold cursor-pointer">
             <Link to="/">MyShop</Link>
@@ -19,8 +20,11 @@ export default function Header() {
                         />
                     </div> */}
 
-          <div>
-            <Link to="/cart">Cart</Link>
+          <div className="text-gray-500 hover:text-indigo-700">
+            <Link to="/cart" className="flex items-center gap-2">
+              <ShoppingBagIcon aria-hidden="true" className="size-6 shrink-0 " />
+              Cart
+            </Link>
           </div>
         </nav>
       </div>
