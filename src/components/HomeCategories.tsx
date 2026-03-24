@@ -4,7 +4,7 @@ export default function HomeCategories() {
   const { categoriesQuery } = useCategories();
   const placeholder = 'https://placehold.co/1000x1000?text=Category&bg=E5E7EB&fg=6B7280';
 
-  if (categoriesQuery.isLoading) return <div>Loading Categories...</div>;
+  if (categoriesQuery.isLoading) return;
 
   return (
     <>

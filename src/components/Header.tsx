@@ -18,6 +18,10 @@ export default function Header() {
                             "
                         />
                     </div> */}
+
+          <div>
+            <Link to="/cart">Cart</Link>
+          </div>
         </nav>
       </div>
     </header>

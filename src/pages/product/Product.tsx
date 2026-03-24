@@ -1,9 +1,11 @@
 import { Link, useParams } from 'react-router';
 import { useProducts } from '../../hooks/useProducts';
 import RelatedProducts from './RelatedProducts';
+import { useCart } from '../../hooks/useCart';
 
 const Product = () => {
   const { id } = useParams();
+  const { addToCartMutation } = useCart();
 
   const placeholder = 'https://placehold.co/1000x1000?text=Product&bg=E5E7EB&fg=6B7280';
   const productId = id ? Number(id) : undefined;
@@ -109,14 +111,15 @@ const Product = () => {
             <h2 className="sr-only">Product information</h2>
             <p className="text-3xl tracking-tight text-gray-900">$ {product.price}</p>
 
-            <form className="mt-10">
+            <div className="mt-10">
               <button
-                type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"
+                onClick={() => addToCartMutation.mutate(product)}
+                disabled={addToCartMutation.isPending}
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"
               >
-                Add to bag
+                {addToCartMutation.isPending ? 'Adding to bag...' : 'Add to bag'}
               </button>
-            </form>
+            </div>
           </div>
 
           <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pr-8 lg:pb-16">

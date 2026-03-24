@@ -17,3 +17,9 @@ export interface Product {
   category: Category;
   images: string[];
 }
+
+export interface CartItem {
+  quantity: number;
+  productId: number;
+  product: Product;
+}
