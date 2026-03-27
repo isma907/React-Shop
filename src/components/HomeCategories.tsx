@@ -18,8 +18,7 @@ export default function HomeCategories() {
                   src={category.image}
                   className="w-full rounded-lg bg-white object-cover group-hover:opacity-75 lg:aspect-square"
                   onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src =
-                      'https://placehold.co/1000x1000?text=Category&bg=E5E7EB&fg=6B7280';
+                    (e.currentTarget as HTMLImageElement).src = placeholder;
                   }}
                 />
 
