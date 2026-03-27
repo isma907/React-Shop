@@ -12,25 +12,22 @@ import './index.css';
 
 const queryClient = new QueryClient();
 
-const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element: (
-        <HomeLayout>
-          <ScrollRestoration />
-          <Outlet />
-        </HomeLayout>
-      ),
-      children: [
-        { index: true, element: <Home /> },
-        { path: 'product/:id', element: <Product /> },
-        { path: 'cart', element: <Cart /> },
-      ],
-    },
-  ],
-  {}
-);
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      <HomeLayout>
+        <ScrollRestoration />
+        <Outlet />
+      </HomeLayout>
+    ),
+    children: [
+      { index: true, element: <Home /> },
+      { path: 'product/:id', element: <Product /> },
+      { path: 'cart', element: <Cart /> },
+    ],
+  },
+]);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
